@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CubeSat Status</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { padding: 3rem;  font-family: Arial; text-align: center; background: #0b0c10; color: white; }
+    h1 { color: #66fcf1; }
+    .section { margin: 20px; padding: 10px; border: 1px solid #45a29e; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <h1>CubeSat Control Panel</h1>
+
+  <div class="section">
+    <h2>Satellite Status</h2>
+    <p>Battery: 80%</p>
+    <p>Temperature: 35°C</p>
+    <p>Humidity: 23</p>
+    <p>Altitude: 400km</p>
+  </div>
+
+  <div class="section">
+    <h2>Live Data</h2>
+    <p id="telemetry">Waiting for data...</p>
+  </div>
+
+  <div class="section">
+    <button onclick="sendCommand('reboot')">Reboot</button>
+    <button onclick="sendCommand('ping')">Ping</button>
+  </div>
+
+ 
+</body>
+</html>
