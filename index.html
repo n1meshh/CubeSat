@@ -1,35 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>CubeSat Status</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { padding: 3rem;  font-family: Arial; text-align: center; background: #0b0c10; color: white; }
-    h1 { color: #66fcf1; }
-    .section { margin: 20px; padding: 10px; border: 1px solid #45a29e; border-radius: 10px; }
-  </style>
+  <meta charset="UTF-8">
+  <title>CubeSat Live Data Viewer</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>CubeSat Control Panel</h1>
+  <h1>CubeSat Live Data</h1>
+  <div id="data-container">Loading data...</div>
 
-  <div class="section">
-    <h2>Satellite Status</h2>
-    <p>Battery: 80%</p>
-    <p>Temperature: 35°C</p>
-    <p>Humidity: 23</p>
-    <p>Altitude: 400km</p>
-  </div>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  
+  <!-- Script -->
+  <script>
+    // Your Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyBCShD8kmvxANWWl5jW3aOvoETwT29uMhA",
+  authDomain: "dht11-5a7ee.firebaseapp.com",
+  databaseURL: "https://dht11-5a7ee-default-rtdb.firebaseio.com",
+  projectId: "dht11-5a7ee",
+  storageBucket: "dht11-5a7ee.firebasestorage.app",
+  messagingSenderId: "497372954718",
+  appId: "1:497372954718:web:51ead8c25b68ea5717b4cf",
+  measurementId: "G-YWBPRMCF1K"
+};
 
-  <div class="section">
-    <h2>Live Data</h2>
-    <p id="telemetry">Waiting for data...</p>
-  </div>
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
-  <div class="section">
-    <button onclick="sendCommand('reboot')">Reboot</button>
-    <button onclick="sendCommand('ping')">Ping</button>
-  </div>
+// Reference to data path (adjust if needed)
+const dataRef = database.ref("/cubesat"); // change path if needed
 
- 
+// Get the container
+const container = document.getElementById("data-container");
+
+// Real-time listener
+dataRef.on("value", (snapshot) => {
+  const data = snapshot.val();
+
+  if (data) {
+    container.innerHTML = `
+      <p><strong>🌡️ Temperature:</strong> ${data.temperature} °C</p>
+      <p><strong>🛰️ Altitude:</strong> ${data.altitude} m</p>
+      <p><strong>💨 Speed:</strong> ${data.speed} m/s</p>
+      <p><strong>📡 Status:</strong> ${data.status}</p>
+      <p><strong>🕒 Timestamp:</strong> ${new Date(data.timestamp).toLocaleTimeString()}</p>
+    `;
+  } else {
+    container.innerHTML = "🚫 No data available.";
+  }
+});
+
+  </script>
 </body>
 </html>

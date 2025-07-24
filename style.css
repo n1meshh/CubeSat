@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    color: #00ffcc;
+  }
+  
+  #data-container {
+    background-color: #1e1e2f;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+  }
+  
