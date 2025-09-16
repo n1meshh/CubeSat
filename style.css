@@ -1,22 +1,75 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    text-align: center;
-    padding: 30px;
-  }
-  
-  h1 {
-    margin-bottom: 20px;
-    color: #00ffcc;
-  }
-  
-  #data-container {
-    background-color: #1e1e2f;
-    padding: 20px;
-    border-radius: 10px;
-    display: inline-block;
-    text-align: left;
-    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
-  }
-  
+  background-color: #121212;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 30px;
+}
+
+h1 {
+  color: #00ffd0;
+}
+
+#data-container {
+  background-color: #1e1e2e;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 20px;
+  box-shadow: 0 0 15px rgba(0, 255, 213, 0.3);
+  text-align: left;
+}
+/* Base styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Heading styling */
+h1 {
+  font-size: 2.5rem;
+  color: #00ffe0;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #00ffe0, 0 0 20px #007c7a;
+}
+
+/* Data container glassmorphism */
+#data-container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover animation */
+#data-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 255, 200, 0.3);
+}
+
+/* Paragraph styling */
+#data-container p {
+  margin: 15px 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Labels */
+#data-container strong {
+  color: #00ffd5;
+}

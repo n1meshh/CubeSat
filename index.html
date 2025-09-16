@@ -1,59 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CubeSat Live Data Viewer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CubeSat Environment Data</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>CubeSat Live Data</h1>
-  <div id="data-container">Loading data...</div>
+  <h1> CubeSat Environmental Data</h1>
+  <div id="data-container">Loading...</div>
 
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
-  
-  <!-- Script -->
-  <script>
-    // Your Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyBCShD8kmvxANWWl5jW3aOvoETwT29uMhA",
-  authDomain: "dht11-5a7ee.firebaseapp.com",
-  databaseURL: "https://dht11-5a7ee-default-rtdb.firebaseio.com",
-  projectId: "dht11-5a7ee",
-  storageBucket: "dht11-5a7ee.firebasestorage.app",
-  messagingSenderId: "497372954718",
-  appId: "1:497372954718:web:51ead8c25b68ea5717b4cf",
-  measurementId: "G-YWBPRMCF1K"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-
-// Reference to data path (adjust if needed)
-const dataRef = database.ref("/cubesat"); // change path if needed
-
-// Get the container
-const container = document.getElementById("data-container");
-
-// Real-time listener
-dataRef.on("value", (snapshot) => {
-  const data = snapshot.val();
-
-  if (data) {
-    container.innerHTML = `
-      <p><strong>🌡️ Temperature:</strong> ${data.temperature} °C</p>
-      <p><strong>🛰️ Altitude:</strong> ${data.altitude} m</p>
-      <p><strong>💨 Speed:</strong> ${data.speed} m/s</p>
-      <p><strong>📡 Status:</strong> ${data.status}</p>
-      <p><strong>🕒 Timestamp:</strong> ${new Date(data.timestamp).toLocaleTimeString()}</p>
-    `;
-  } else {
-    container.innerHTML = "🚫 No data available.";
-  }
-});
-
+  <script src="script.js" defer>
+    
   </script>
 </body>
 </html>
