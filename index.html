@@ -1,20 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CubeSat Environment Data</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubeSat Environmental Monitoring System</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1> CubeSat Environmental Data</h1>
-  <div id="data-container">Loading...</div>
+    <div class="container">
+        <div class="header">
+            <h1>CubeSat Environmental Monitoring System</h1>
+            <div class="header-controls">
+                <span class="status-badge realtime" id="connectionStatus">Realtime</span>
+                <span class="status-badge offline" style="display: none;">Device Offline</span>
+                <button class="menu-btn">Menu</button>
+            </div>
+        </div>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
-  <script src="script.js" defer>
-    
-  </script>
+        <div class="main-content">
+            <div class="left-section">
+                <div class="live-readings">
+                    <h2>Live Telemetry</h2>
+                    <div class="readings-grid">
+                        <div class="reading-card">
+                            <div class="reading-icon temp-icon">🌡️</div>
+                            <h3>BMP Temperature</h3>
+                            <div class="reading-value" id="bmpTemp">30.7°C</div>
+                        </div>
+                        <div class="reading-card">
+                            <div class="reading-icon temp-icon2">🌡️</div>
+                            <h3>DHT Temperature</h3>
+                            <div class="reading-value" id="dhtTemp">29.5°C</div>
+                        </div>
+                        <div class="reading-card">
+                            <div class="reading-icon humidity-icon">💧</div>
+                            <h3>Humidity</h3>
+                            <div class="reading-value" id="humidity">60.0%</div>
+                        </div>
+                        <div class="reading-card">
+                            <div class="reading-icon pressure-icon">📊</div>
+                            <h3>Pressure</h3>
+                            <div class="reading-value" id="pressure">863.6 hPa</div>
+                        </div>
+                        <div class="reading-card">
+                            <div class="reading-icon pressure-icon2">📈</div>
+                            <h3>SL Pressure</h3>
+                            <div class="reading-value" id="slPressure">1016.0 hPa</div>
+                        </div>
+                    </div>
+
+                    <div class="air-quality-card">
+                        <div class="air-quality-icon">🔬</div>
+                        <div class="air-quality-title">MQ Raw</div>
+                        <div class="air-quality-value" id="mqRaw">734</div>
+                        <div class="air-quality-status">Poor</div>
+                        <div class="air-quality-detail">Air: Poor<br>Baseline: 578.61</div>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-color bmp-temp"></div>
+                            <span>BMP Temp (°C)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color dht-temp"></div>
+                            <span>DHT Temp (°C)</span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-line">
+                            <div class="temp-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="comfort-panel">
+                    <h2>System Status</h2>
+                    <div class="comfort-item">
+                        <span class="comfort-label">Thermal</span>
+                        <span class="comfort-status status-warm">Nominal</span>
+                    </div>
+                    <div class="comfort-item">
+                        <span class="comfort-label">Humidity</span>
+                        <span class="comfort-status status-optimal">Optimal</span>
+                    </div>
+                    <div class="comfort-item">
+                        <span class="comfort-label">Atmosphere</span>
+                        <span class="comfort-status status-poor">Monitoring</span>
+                    </div>
+                    <div class="comfort-item">
+                        <span class="comfort-label">Overall Status</span>
+                        <span class="comfort-status status-attention">Operational</span>
+                    </div>
+                </div>
+
+              
+            </div>
+        </div>
+    </div>
+
+  
 </body>
 </html>
